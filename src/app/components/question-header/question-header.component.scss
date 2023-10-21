@@ -1,0 +1,50 @@
+
+nav{
+    padding-left: 4rem;
+    padding-right: 4rem;
+    background-color: black;
+   
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    
+    
+  }
+
+.over{
+  overflow-y: hidden;
+  
+}
+.head{
+    text-align: center;
+}
+.act,
+  .navbar ul li a:hover {
+    color: #7d12ff !important;
+    border-bottom: 1px solid #7d12ff;
+  }
+  .theme-text {
+    color: #7d12ff !important;
+  }
+  .cen{
+  
+    @media only screen and (max-width:991px){
+      
+        text-align: center;
+       
+    }
+    }
+.nav_svg{
+    fill:#7d12ff;
+}
+.user_details{
+    color: rgba(255,255,255,0.55);
+    
+}
+@media only screen and (max-width:991px) {
+
+    #hide{
+      display: none;
+    }
+    
+    }

@@ -1,0 +1,138 @@
+
+<section id="#tile" class="light">
+
+    <h1 class="main">Experiences</h1>
+    <h3 class="subhead">Let's share</h3>
+    <!-- <div class="options" >
+      
+      <button [ngClass]=" act===1 ? 'active' : 'normal' " (click)="css1()" >
+        Internship
+      </button>
+        &nbsp;
+        &nbsp;
+      <button [ngClass]=" act===2 ? 'active' : 'normal' " (click)="css2()" >
+        Full-time
+      </button>
+    </div> *ngIf="b.category==stat"-->
+
+    <div style="text-align: center;">
+      <div style="vertical-align: middle;display:inline-block;" class="purple-outline">
+        <h5 style="display:inline-block;">Head to our --></h5>&nbsp;<button  class="btn btn-block question-bank" routerLink="/user/question-home">Question Bank</button>
+        
+      </div>
+    </div>
+    
+<br>
+<br>
+
+
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-lg-3">
+          <label for="companyName">Company Name</label>
+          <select placeholder="companyName" class="form-control item" id="companyName" required [(ngModel)]="filter_companyName" name="companyName" >
+            <option value="menu" hidden disabled selected value class="op"></option>
+            <option *ngFor="let m of company_menu" value="{{m}}">{{m}}</option>
+        </select>
+        </div>
+        <div class="col-lg-3">
+          <label for="category">Category</label>
+          <select placeholder="Category" class="form-control item" id="category" required name="category" [(ngModel)]="filter_category" >
+            <option value="Category" hidden disabled selected value class="op"></option>
+            <option value="Internship">Internship</option>
+            <option value="Full-time">Full-time</option>
+            <option value="InternAndFTE">Intern+FTE</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3">
+          <label for="campus">Campus</label>
+
+          <select placeholder="Category" class="form-control item" id="campus" name="campus" [(ngModel)]="filter_campus">
+              <option value="Category" hidden disabled selected value class="op"></option>
+              <option value="OnCampus">OnCampus</option>
+              <option value="OffCampus">OffCampus</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3">
+          <label for="campus">Type of Round</label>
+
+          <select placeholder="Round" class="form-control item" id="round" required [(ngModel)]="filter_round" name="round" >
+              <option value="Round" hidden disabled selected value class="op"></option>
+              <option value="OA">Online Assessment</option>
+              <option value="Technical">Technical Interview</option>
+              <option value="Aptitute">Aptitute</option>
+              <option value="HR">HR</option>
+              <option value="Overall">Overall</option>
+          </select>    
+
+        </div>
+        
+      </div>
+      <div style="text-align: center;">
+        <button (click)="search()" class="btn btn-block search" >Search</button>
+        &nbsp;
+        <button (click)="Onload()" style="background-color: red;outline: 2px solid red;" class="btn btn-block search">Clear Filters</button>
+      </div>
+      
+    </div>
+    
+  <br>
+  <br>
+
+  
+  <div *ngIf="Cards===true" >
+    <div class="container py-2"  >
+  
+      &nbsp; &nbsp;<p style="opacity: 0.85;">{{blog[0].length}} record found</p>
+          <div class="row" >
+
+          <article class="col-md-6 col-sm-12" *ngFor="let b of blog[0]">
+
+          
+          <article class="postcard light green "  >
+              <a class="postcard__img_link"  >
+              </a>
+              <div class="postcard__text t-dark"   >
+                  <h1 class="postcard__title green"><a >{{b.companyName}}</a></h1>
+                  <div class="postcard__subtitle small">
+                      <time datetime="2020-05-25 12:00:00">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                        </svg> {{b.Cdate}}
+                      </time>
+                      
+                  </div>
+                  <div class="postcard__bar"></div>
+                  
+
+                  <div class="postcard__preview-txt truncate">{{(b.description.length>140)?(b.description | slice:0:150)+'...' :(b.description)}}<a routerLink="/user/blog-details/{{b._id}}"  class="read" *ngIf="b.description.length>100" >Read More</a> </div>
+
+                  <ul class="postcard__tagbox">
+                    <li class="tag__item"><a href="{{b.linkedIn}}" target="_blank"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                      <li class="tag__item"><i class="fa fas fa-tag mr-2"></i> {{b.category}}</li>
+                      <li class="tag__item"><i class="fa fas fa-tag mr-2"></i> {{b.campus}}</li>
+                      <li class="tag__item"><i class="fa fas fa-tag mr-2"></i> {{b.round}}</li>
+                  </ul>
+                  <ul class="postcard__tagbox">
+                    <li class="tag__item">-{{b.writer}}</li>
+                </ul>
+                <ul class="postcard__tagbox">
+                  <li > <p style="opacity: 0.85;display: inline;">{{b.likes}} </p> <svg (click)="likePost(b._id,b)" xmlns="http://www.w3.org/2000/svg" width="5%" viewBox="0 0 512 512"><style>svg{fill:#39b54a}</style><path d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2H464c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48H294.5c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3V320 272 247.1c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192H96c17.7 0 32 14.3 32 32V448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32z"/></svg>
+                  &nbsp;
+                    <svg (click)="dislikePost(b._id,b)" xmlns="http://www.w3.org/2000/svg" width="5%" viewBox="0 0 512 512"><style>svg{fill:#39b54a}</style><path d="M313.4 479.1c26-5.2 42.9-30.5 37.7-56.5l-2.3-11.4c-5.3-26.7-15.1-52.1-28.8-75.2H464c26.5 0 48-21.5 48-48c0-18.5-10.5-34.6-25.9-42.6C497 236.6 504 223.1 504 208c0-23.4-16.8-42.9-38.9-47.1c4.4-7.3 6.9-15.8 6.9-24.9c0-21.3-13.9-39.4-33.1-45.6c.7-3.3 1.1-6.8 1.1-10.4c0-26.5-21.5-48-48-48H294.5c-19 0-37.5 5.6-53.3 16.1L202.7 73.8C176 91.6 160 121.6 160 153.7V192v48 24.9c0 29.2 13.3 56.7 36 75l7.4 5.9c26.5 21.2 44.6 51 51.2 84.2l2.3 11.4c5.2 26 30.5 42.9 56.5 37.7zM32 384H96c17.7 0 32-14.3 32-32V128c0-17.7-14.3-32-32-32H32C14.3 96 0 110.3 0 128V352c0 17.7 14.3 32 32 32z"/></svg>                  </li>
+              </ul>
+              
+              
+              </div>
+          </article> 
+        </article>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="Cards===false">
+      <h1 class="noRec">No Records Found!!</h1>
+  </div>
+  </section>

@@ -11,6 +11,8 @@ export class QuestionService {
   private baseURL="http://localhost:8000/q/questions";
   private searchURL="http://localhost:8000/q/question"
   private emailURL="http://localhost:8000/q/Email"
+  private apiUrl = 'http://localhost:8000/q/api2/likes';
+
   constructor(private httpClient: HttpClient) { }
 
 
@@ -42,11 +44,16 @@ export class QuestionService {
 
     return this.httpClient.get<Question[]>(`${this.searchURL}?companyName=${companyName}&category=${category}&campus=${campus}&round=${round}`);
   }
-  likeBlog(id:string):Observable<Question>{
-    return this.httpClient.put<Question>(`${this.baseURL}/${id}/like`,{});
-  }
-  dislikeBlog(id:string):Observable<Question>{
-    return this.httpClient.put<Question>(`${this.baseURL}/${id}/dislike`,{});
+  // likeBlog(id:string):Observable<Question>{
+  //   return this.httpClient.put<Question>(`${this.baseURL}/${id}/like`,{});
+  // }
+  // dislikeBlog(id:string):Observable<Question>{
+  //   return this.httpClient.put<Question>(`${this.baseURL}/${id}/dislike`,{});
+  // }
+  toggleLike(itemId: string, userId: string): Observable<Question> {
+    console.log(itemId);
+    
+    return this.httpClient.put<Question>(`${this.apiUrl}/toggle`, { itemId, userId });
   }
   updateQuestion(id:string, blog: Question):Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`,blog);

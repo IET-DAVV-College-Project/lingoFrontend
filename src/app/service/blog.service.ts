@@ -9,8 +9,9 @@ import { Blog } from '../model/blog';
 export class BlogService {
 
   private baseURL="http://localhost:8000/blogs";
-  private searchURL="http://localhost:8000/blog"
-  private emailURL="http://localhost:8000/Email"
+  private searchURL="http://localhost:8000/blog";
+  private emailURL="http://localhost:8000/Email";
+  private apiUrl = 'http://localhost:8000/api/likes';
   constructor(private httpClient: HttpClient) { }
 
 
@@ -53,7 +54,11 @@ export class BlogService {
   dislikeBlog(id:string):Observable<Blog>{
     return this.httpClient.put<Blog>(`${this.baseURL}/${id}/dislike`,{});
   }
-
+  toggleLike(itemId: string, userId: string): Observable<Blog> {
+    console.log(itemId);
+    
+    return this.httpClient.put<Blog>(`${this.apiUrl}/toggle`, { itemId, userId });
+  }
   deleteBlog(id: string): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }

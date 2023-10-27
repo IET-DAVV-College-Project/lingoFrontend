@@ -10,6 +10,7 @@ export class Blog {
     linkedIn!:string;
     __v!:number;
     likes!:number;
+    likesArray!:string[];
     constructor(){
         // this.Cdate=(new Date()).toLocaleDateString('en-GB');
     }

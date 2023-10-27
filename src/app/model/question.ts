@@ -7,5 +7,6 @@ export class Question {
     writer!:string;
     linkedIn!:string;
     likes!:number;
+    likesArray!:string[];
     question_arr!:string[];
 }

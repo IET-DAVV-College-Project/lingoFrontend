@@ -11,7 +11,9 @@ $main-green-rgb-015: rgba(57, 181, 74, 0.1) !default;
 	font-weight: initial;
     
 }
-
+.active{
+  fill: #39b54a;
+}
 .main{
     padding-top: 100px;
     text-align: center;

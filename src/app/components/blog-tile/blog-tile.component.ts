@@ -1,6 +1,8 @@
+import { SocialUser } from '@abacritt/angularx-social-login/entities/social-user';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Blog } from 'src/app/model/blog';
+import { AuthService } from 'src/app/service/auth.service';
 import { BlogService } from 'src/app/service/blog.service';
 import { DataService } from 'src/app/service/data.service';
 
@@ -20,8 +22,11 @@ export class BlogTileComponent {
   Cards=true;
   isLiked=false;
   company_menu=this.dataservice.globalArray;
-
-  constructor(private dataservice:DataService,private blogService: BlogService){}
+  isActive: boolean = false;
+  social_user!:SocialUser;
+  constructor(private dataservice:DataService,private blogService: BlogService,private authService:AuthService){
+    this.social_user=authService.user
+  }
 
   ngOnInit(): void{
     this.getBlogsByFilter();
@@ -40,33 +45,43 @@ export class BlogTileComponent {
     })
   }
 
-  likeBad()
-  {
-
-  }
-  likePost(postid:string,b:any) {
+ 
+  // likePost(postid:string,b:any) {
     
-    this.blogService.likeBlog(postid)
-      .subscribe(response => {
-        // Handle the response if needed
+  //   this.blogService.likeBlog(postid)
+  //     .subscribe(response => {
+  //       // Handle the response if needed
         
       
-        console.log('Post liked successfully!', response);
-        b.likes=response.likes;
-      });
+  //       console.log('Post liked successfully!', response);
+  //       b.likes=response.likes;
+  //     });
       
     
+  // }
+
+  // dislikePost(postid:string,b:any) {
+  //   this.blogService.dislikeBlog(postid)
+  //     .subscribe(response => {
+  //       // Handle the response if needed
+        
+  //       console.log('Post disliked successfully!', response);
+  //       b.likes=response.likes;
+  //     }); 
+  // }
+  toggleLike(postid:string,b:any) {
+    this.isActive = !this.isActive;
+    console.log(postid);
+    console.log(this.social_user.id);
+    
+    this.blogService.toggleLike(postid, this.social_user.id).subscribe(response => {
+      b.likes = response.likes;
+      console.log(response);
+      console.log(b.likesArray);
+      
+    });
   }
 
-  dislikePost(postid:string,b:any) {
-    this.blogService.dislikeBlog(postid)
-      .subscribe(response => {
-        // Handle the response if needed
-        
-        console.log('Post disliked successfully!', response);
-        b.likes=response.likes;
-      }); 
-  }
   private getBlogsByFilter(){
       this.blogService.getBlogByFilter(this.filter_companyName,this.filter_category,this.filter_campus,this.filter_round).subscribe(data => {
         console.log(data);

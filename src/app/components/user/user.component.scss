@@ -140,10 +140,10 @@ h6 {
   margin-bottom: 58px;
 }
 @media (max-width: 568px) {
-//   .carousel {
-//     -webkit-padding-after: 52px;
-//             padding-block-end: 52px;
-//   }
+  .carousel {
+    -webkit-padding-after: 100px;
+            padding-block-end: 100px;
+  }
 }
 .carousel__wrapper {
   position: relative;
@@ -156,7 +156,7 @@ h6 {
   position: absolute;
   //max-width: 418px;
   height: 100%;
-  
+  width: 64.5%;
   margin-inline: 32px;
   opacity: 0;
   will-change: transform, opacity;
@@ -165,7 +165,8 @@ h6 {
 }
 @media (max-width: 568px) {
   .carousel .item {
-    margin-inline: calc(var(--container-padding-horizontal) + 1px);
+    margin-inline: calc(var(--container-padding-horizontal) + 65px);
+    padding-top: 100px;
   }
 }
 .carousel .item:nth-child(1) {
@@ -265,9 +266,11 @@ h6 {
   font-size: clamp(1.09rem, 1.42vw + 0.74rem, 1.88rem);
   min-width: 24px;
   min-height: 24px;
+  fill: none;
 }
 .instagram__icon:hover {
-  opacity: 0.7;
+  opacity: 0.9;
+  fill: #39b54a;
 }
 .instagram__icon path {
   stroke: #39b54a;

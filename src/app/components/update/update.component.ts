@@ -7,7 +7,9 @@ import { BlogService } from 'src/app/service/blog.service';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from 'src/app/service/auth.service';
 import { DataService } from 'src/app/service/data.service';
+import  Filter from 'bad-words';
 
+const filter = new Filter();
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -25,10 +27,22 @@ export class UpdateComponent {
     if(this.tempCN!=="Others")
     this.blog[0].companyName=this.tempCN;
     
-    this.blogService.updateBlog(this.id,this.blog[0]).subscribe(data => {
-      this.router.navigate(['/user/details']);
-      
-    }, error => console.log(error));
+    if(this.blog[0].description.split(" ").length<100)
+      alert("Please write your experience atleast in 100 words.");
+    else
+    {
+      if(filter.isProfane(this.blog[0].description))
+        alert("You are not allowed to use any offensive words.");
+      else
+      {
+        this.blogService.updateBlog(this.id,this.blog[0]).subscribe(data => {
+          this.router.navigate(['/user/details']);
+          
+        }, error => console.log(error));
+      }
+    }
+
+    
   }
 
   ngOnInit()

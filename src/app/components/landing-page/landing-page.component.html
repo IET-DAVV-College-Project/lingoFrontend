@@ -29,13 +29,22 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link transform" routerLink="/user/details" >Profile</a>
+                            <a class="nav-link transform" routerLink="/user/details" >Experiences</a>
+                        </li>
+                        <li class="nav-item">
+                      
+                            <a class="nav-link transform" href="/" (click)="logout()"> Log out</a>
                         </li>
                         
                     </ul>
 
                 </div>
             </div>
+            <a class="navbar-brand user_details" id="hide">
+                <img  src="{{user.photoUrl}}" width="30" class="d-inline-block align-top" style="border-radius: 100%;"/>
+          
+                <!-- {{social_user.email}} -->
+              </a>
         </nav>
         <!-- navbar code -->
         <div class="container over">
@@ -51,7 +60,7 @@
                 </h1>
                 <br>
                 <div class="started">
-                 <h4 style="color: aliceblue;">Hey <span style="color: #04d9ff;">{{user.firstName}} </span>!!</h4>  <br> <a href="/user/details" >Explore</a>
+                 <h4 style="color: aliceblue;">Hey <span style="color: #04d9ff;">{{user.firstName}} </span>!!</h4>  <br> <a href="/user/details" >Experiences</a> &nbsp; <a href="/user/question-home" >Question Bank</a> 
                 </div>
                 <!-- #0093dd -->
                     

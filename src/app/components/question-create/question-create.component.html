@@ -61,7 +61,7 @@
                 </div> -->
                 <div *ngFor="let control of questionControls; let i = index" class="form-group">
                     &nbsp; &nbsp; <label for="question{{ i }}">Question {{ i + 1 }} <p style="color: red;display: inline;">*</p></label>
-                    <input type="text" class="form-control item" [formControl]="control" autocomplete="off" required>
+                    <textarea type="text" class="form-control item" [formControl]="control" autocomplete="off" required></textarea>
                   </div>
                 <div class="form-group" style="text-align: center;">
                     <button type="button" class="btn btn-block creat-account" (click)="addQuestion()">Add Question</button>

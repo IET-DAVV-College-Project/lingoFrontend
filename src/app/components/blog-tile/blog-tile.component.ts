@@ -15,10 +15,10 @@ import { DataService } from 'src/app/service/data.service';
 export class BlogTileComponent {
 
   blog!: any;
-  filter_category!:string;
-  filter_campus!:string;
-  filter_round!:string;
-  filter_companyName!:string;
+  filter_category:string="";
+  filter_campus:string="";
+  filter_round:string="";
+  filter_companyName:string="";
   Cards=true;
   isLiked=false;
   company_menu=this.dataservice.globalArray;

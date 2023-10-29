@@ -3,24 +3,14 @@
 
     <h1 class="main">Experiences</h1>
     <h3 class="subhead">Let's share</h3>
-    <!-- <div class="options" >
-      
-      <button [ngClass]=" act===1 ? 'active' : 'normal' " (click)="css1()" >
-        Internship
-      </button>
-        &nbsp;
-        &nbsp;
-      <button [ngClass]=" act===2 ? 'active' : 'normal' " (click)="css2()" >
-        Full-time
-      </button>
-    </div> *ngIf="b.category==stat"-->
+    
 
-    <div style="text-align: center;" class="container">
-      <div style="vertical-align: middle;display:inline-block;" class=" purple-outline">
-        <h5 style="display:inline-block;">Head to our --></h5>&nbsp;<button  class="btn btn-block question-bank" routerLink="/user/question-home">Question Bank</button>
+    <!-- <div style="text-align: center;" class="container">
+      <div style="vertical-align: middle;display:inline-block;" >
+        <h5 style="display:inline-block;"></h5>&nbsp;<button  class="btn btn-block question-bank" routerLink="/user/question-home">Question Bank</button>
         
       </div>
-    </div>
+    </div> -->
     
 <br>
 <br>
@@ -28,18 +18,18 @@
 
     <div class="container">
       <div class="row">
-        
+  
         <div class="col-lg-3">
           <label for="companyName">Company Name</label>
-          <select placeholder="companyName" class="form-control item" id="companyName" required [(ngModel)]="filter_companyName" name="companyName" >
-            <option value="menu" hidden disabled selected value class="op"></option>
+          <select  class="form-control item" id="companyName" required [(ngModel)]="filter_companyName" name="companyName" >
+            <option  value="" disabled selected ><--Select the Company Name--></option>
             <option *ngFor="let m of company_menu" value="{{m}}">{{m}}</option>
         </select>
         </div>
         <div class="col-lg-3">
           <label for="category">Category</label>
           <select placeholder="Category" class="form-control item" id="category" required name="category" [(ngModel)]="filter_category" >
-            <option value="Category" hidden disabled selected value class="op"></option>
+            <option  value="" disabled selected  ><--Select the Category--></option>
             <option value="Internship">Internship</option>
             <option value="Full-time">Full-time</option>
             <option value="InternAndFTE">Intern+FTE</option>
@@ -50,7 +40,7 @@
           <label for="campus">Campus</label>
 
           <select placeholder="Category" class="form-control item" id="campus" name="campus" [(ngModel)]="filter_campus">
-              <option value="Category" hidden disabled selected value class="op"></option>
+            <option  value="" disabled selected  ><--Select the Campus type--></option>
               <option value="OnCampus">OnCampus</option>
               <option value="OffCampus">OffCampus</option>
           </select>
@@ -60,7 +50,7 @@
           <label for="campus">Type of Round</label>
 
           <select placeholder="Round" class="form-control item" id="round" required [(ngModel)]="filter_round" name="round" >
-              <option value="Round" hidden disabled selected value class="op"></option>
+            <option  value="" disabled selected ><--Select the Round--></option>
               <option value="OA">Online Assessment</option>
               <option value="Technical">Technical Interview</option>
               <option value="Aptitute">Aptitute</option>

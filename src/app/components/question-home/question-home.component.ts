@@ -13,10 +13,10 @@ import { QuestionService } from 'src/app/service/question.service';
 export class QuestionHomeComponent {
 
   question!:any;
-  filter_category!:string;
-  filter_campus!:string;
-  filter_round!:string;
-  filter_companyName!:string;
+  filter_category:string="";
+  filter_campus:string="";
+  filter_round:string="";
+  filter_companyName:string="";
   Cards=true;
   company_menu=this.dataservice.globalArray;
   social_user!:SocialUser;

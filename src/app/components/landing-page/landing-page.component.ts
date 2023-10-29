@@ -34,7 +34,10 @@ export class LandingPageComponent {
   constructor(private router:Router,private authService:AuthService){
     this.user=this.authService.user;
   }
-
+  logout(): void {
+      
+    this.authService.signOut();
+  }
   isAuthorized()
   {
     return this.authService.isAuthorized()

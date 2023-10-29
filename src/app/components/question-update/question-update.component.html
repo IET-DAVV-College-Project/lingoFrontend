@@ -71,7 +71,7 @@
                 
                     <div *ngFor="let control of questionControls; let i = index" class="form-group">
                         &nbsp; &nbsp; <label for="question{{ i }}">Question {{ i + 1 }} <p style="color: red;display: inline;">*</p></label>
-                        <input type="text" class="form-control item"  [formControl]="control" autocomplete="off" required [value]="control.value">
+                        <textarea type="text" class="form-control item"  [formControl]="control" autocomplete="off" required [value]="control.value"></textarea>
                       </div>
                 
                 

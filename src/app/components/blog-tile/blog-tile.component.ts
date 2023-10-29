@@ -85,8 +85,9 @@ export class BlogTileComponent {
   private getBlogsByFilter(){
       this.blogService.getBlogByFilter(this.filter_companyName,this.filter_category,this.filter_campus,this.filter_round).subscribe(data => {
         console.log(data);
-        
+        this.Cards=true;
         this.blog=data;
+        
       },
           error => this.Cards=false
           

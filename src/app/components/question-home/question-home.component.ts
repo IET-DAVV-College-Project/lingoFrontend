@@ -32,7 +32,7 @@ export class QuestionHomeComponent {
   private getQuestionsByFilter(){
     this.questionService.getQuestionByFilter(this.filter_companyName,this.filter_category,this.filter_campus,this.filter_round).subscribe(data => {
       console.log(data);
-      
+      this.Cards=true;
       this.question=data;
     },
         error => this.Cards=false
